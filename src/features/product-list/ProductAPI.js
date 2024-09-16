@@ -20,6 +20,10 @@ export function fetchProductsByFilters(filter,sort) {
       const lastCategoryValue = categoryValues[categoryValues.length-1]
       queryString += `${key}=${lastCategoryValue}&`
     }
+    console.log(pagination)
+    for(let key in pagination){
+      queryString += `${key}=${pagination[key]}&`
+    }
   }
   for(let key in sort){
     queryString += `${key}=${sort[key]}&`
@@ -31,7 +35,8 @@ export function fetchProductsByFilters(filter,sort) {
     //TODO: we will not hard-code server URL here
     const response = await fetch('http://localhost:8080/products?'+queryString) 
  const data = await response.json()
-    resolve({data})
+ const totalItems = await response.headers.get('X-Total-Count')
+ resolve({data:{products:data,totalItems:+totalItems}})
   }
   );
 }
