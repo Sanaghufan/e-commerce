@@ -14,7 +14,7 @@ import {
 
 import CartPage from "./pages/CartPage";
 import Checkout from "./pages/Checkout";
-import { ProductList } from "./features/product-list/components/Product";
+import { ProductList } from "./features/product-list/components/ProductList";
 import ProductDetail from "./features/product-list/components/ProductDetail";
 import ProductDetailPage from "./pages/ProductDetailPage";
 
