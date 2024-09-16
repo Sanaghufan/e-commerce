@@ -121,13 +121,15 @@ export function ProductList() {
     console.log({ page });
     setPage(page);
   };
-  useEffect(() => {
-    const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
-    dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
-  }, [dispatch, filter, sort, page]);
   useEffect(()=>{
     setPage(1)
   },[totalItems,sort])
+  useEffect(() => {
+    const pagination = {  _page:page,_limit: ITEMS_PER_PAGE };
+    console.log("pagination",pagination)
+    dispatch(fetchProductsByFilterAsync({ filter, sort, pagination }));
+  }, [dispatch, filter, sort, page]);
+ 
   return (
     <div>
       <div>
